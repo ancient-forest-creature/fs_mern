@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-const PersonForm= () => {
+const PersonForm= (props) => {
+    const {people, setPeople} = props;
     const [ firstName, setFirstName ] = useState("");
     const [lastName, setLastName ] = useState("");
 
@@ -15,6 +16,9 @@ const PersonForm= () => {
             .then(res=>{
                 console.log(res); // always console log to get used to tracking your data!
                 console.log(res.data);
+                setPeople([...people, res.data]);
+                setFirstName("");
+                setLastName("");
             })
             .catch(err=>console.log(err))
     }
@@ -26,11 +30,11 @@ const PersonForm= () => {
                 {/* When the user types in this input, our onChange synthetic event 
                     runs this arrow function, setting that event's target's (input) 
                     value (what's typed into the input) to our updated state   */}
-                <input type="text" onChange = {(e)=>setFirstName(e.target.value)}/>
+                <input type="text" value={firstName} onChange = {(e)=>setFirstName(e.target.value)}/>
             </p>
             <p>
                 <label>Last Name</label><br/>
-                <input type="text" onChange = {(e)=>setLastName(e.target.value)}/>
+                <input type="text" value={lastName} onChange = {(e)=>setLastName(e.target.value)}/>
             </p>
             <input type="submit"/>
         </form>
