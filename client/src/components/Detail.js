@@ -4,6 +4,7 @@ import {useParams} from "react-router-dom";
 const Detail = (props) => {
     const [person, setPerson] = useState({})
     const {id} = useParams(); 
+    console.log(id);
 // Reach router creates a key:value pair inside of our props object 
 //     for every variable found inside the "path" attribute. 
 // For example, the "path" attribute of the Detail component (Code Block 3 - App.js).   

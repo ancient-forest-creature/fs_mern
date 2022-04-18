@@ -10,7 +10,7 @@ module.exports = (app) => {
     //The parameter (params) id, as defined in the controller MUST MATCH
         //what we defined it as in the controller!
     app.get("/api/person/:id", PersonController.findOnePerson)
-    app.delete("/api/person/:id", PersonController.deleteOnePerson)
     app.put("/api/person/:id", PersonController.updatePerson)
+    app.delete("/api/person/:id", PersonController.deleteOnePerson)
 }
 
